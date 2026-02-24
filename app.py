@@ -32,21 +32,29 @@ st.markdown("""
         background-color: #0f172a !important;
     }
     
-    /* 3. FIX: Sidebar Tip/Info text to WHITE */
+    /* 3. Sidebar Tip/Info text to WHITE */
     [data-testid="stSidebar"] div[data-testid="stNotification"] div {
         color: white !important;
     }
 
-    /* 4. FIX: Make Generated Notes VISIBLE (Dark Color) */
-    [data-testid="stVerticalBlock"] .stMarkdown p, 
-    [data-testid="stVerticalBlock"] .stMarkdown h1, 
-    [data-testid="stVerticalBlock"] .stMarkdown h2, 
-    [data-testid="stVerticalBlock"] .stMarkdown h3,
-    [data-testid="stVerticalBlock"] .stMarkdown li {
+    /* 4. FIX: Header Labels (1. Upload & 2. Process) to BLACK */
+    /* Hum specific headings aur normal text ko target kar rahe hain */
+    [data-testid="stVerticalBlock"] h3 {
+        color: #000000 !important;
+        font-weight: 800 !important;
+    }
+    
+    [data-testid="stVerticalBlock"] p, [data-testid="stVerticalBlock"] label {
+        color: #000000 !important;
+        font-weight: 500 !important;
+    }
+
+    /* 5. Generated Notes Styling (Keep as is, Dark Blue-Grey) */
+    .stMarkdown div p, .stMarkdown div h1, .stMarkdown div h2, .stMarkdown div h3, .stMarkdown div li {
         color: #1e293b !important;
     }
 
-    /* 5. Sidebar Labels and Titles to White */
+    /* 6. Sidebar Labels and Titles to White */
     [data-testid="stSidebar"] .stMarkdown p, 
     [data-testid="stSidebar"] h1, 
     [data-testid="stSidebar"] h2,
@@ -54,7 +62,7 @@ st.markdown("""
         color: #f8fafc !important;
     }
 
-    /* 6. Primary Action Button Styling */
+    /* 7. Primary Action Button Styling */
     div.stButton > button:first-child {
         background: linear-gradient(to right, #3b82f6 0%, #2563eb 100%);
         color: white !important;
@@ -62,35 +70,15 @@ st.markdown("""
         width: 100%;
         border-radius: 10px;
         font-weight: 700;
-        font-size: 16px;
         border: none;
-        transition: all 0.3s ease;
-    }
-    
-    div.stButton > button:hover {
-        transform: scale(1.02);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 
-    /* 7. Content Cards */
+    /* 8. Content Cards */
     [data-testid="stVerticalBlock"] > div:has(div.stFileUploader) {
         background: white;
         padding: 25px;
         border-radius: 12px;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    /* 8. Footer Styling */
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: transparent;
-        color: #64748b;
-        text-align: center;
-        padding: 10px;
-        font-size: 14px;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -174,4 +162,5 @@ if uploaded_file is not None and generate_button:
         finally:
             if os.path.exists(temp_audio_path):
                 os.remove(temp_audio_path)
+
 
